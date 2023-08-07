@@ -1,4 +1,4 @@
-$fa = 1;
+git$fa = 1;
 $fs = 0.4;
 wheel_radius = 10;
 base_height = 10;
@@ -18,19 +18,19 @@ rotate([body_roll,0,0]) {
 // Front left wheel
 translate([-20,-track/2,0])
     rotate([90,0,wheels_turn])
-    cylinder(h=wheel_width,r=wheel_radius,center=true);
+    sphere(h=wheel_width,r=wheel_radius,center=true);
 // Front right wheel
 translate([-20,track/2,0])
     rotate([90,0,wheels_turn])
-    cylinder(h=wheel_width,r=wheel_radius,center=true);
+    sphere(h=wheel_width,r=wheel_radius,center=true);
 // Rear left wheel
 translate([20,-track/2,0])
     rotate([90,0,0])
-    cylinder(h=wheel_width,r=wheel_radius,center=true);
+    sphere(h=wheel_width,r=wheel_radius,center=true);
 // Rear right wheel
 translate([20,track/2,0])
     rotate([90,0,0])
-    cylinder(h=wheel_width,r=wheel_radius,center=true);
+    sphere(h=wheel_width,r=wheel_radius,center=true);
 // Front axle
 translate([-20,0,0])
     rotate([90,0,0])

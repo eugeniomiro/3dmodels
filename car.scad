@@ -1,34 +1,41 @@
 $fa = 1;
 $fs = 0.4;
-// car body base
-cube([60, 20, 10], center=true);
-// car body top
-translate([5,0,10])
-    cube([30, 20, 10], center=true);
-// body-cabin connection
-translate([0,0,5])
-    cube([30, 20, 0.002], center=true);
-// left-front wheel
-translate([-20,-15,0])
+wheel_radius = 10;
+base_height = 10;
+top_height = 14;
+track = 40;
+wheel_width = 10;
+body_roll = -5;
+wheels_turn = 20;
+
+rotate([body_roll,0,0]) {
+    // Car body base
+    cube([60,20,base_height],center=true);
+    // Car body top
+    translate([5,0,base_height/2+top_height/2 - 0.001])
+        cube([30,20,top_height],center=true);
+}
+// Front left wheel
+translate([-20,-track/2,0])
+    rotate([90,0,wheels_turn])
+    cylinder(h=wheel_width,r=wheel_radius,center=true);
+// Front right wheel
+translate([-20,track/2,0])
+    rotate([90,0,wheels_turn])
+    cylinder(h=wheel_width,r=wheel_radius,center=true);
+// Rear left wheel
+translate([20,-track/2,0])
     rotate([90,0,0])
-        cylinder(h=3, r=8, center=true);
-// right-front wheel
-translate([-20,15,0])
+    cylinder(h=wheel_width,r=wheel_radius,center=true);
+// Rear right wheel
+translate([20,track/2,0])
     rotate([90,0,0])
-        cylinder(h=3, r=8, center=true);
-// left-rear wheel
-translate([20,-15,0])
-    rotate([90,0,0])
-        cylinder(h=3, r=8, center=true);
-// right-rear wheel
-translate([20,15,0])
-    rotate([90,0,0])
-        cylinder(h=3, r=8, center=true);
-// rear axle
-translate([20,0,0])
-    rotate([90,0,0])
-        cylinder(h=30, r=2, center=true);
-// front axle
+    cylinder(h=wheel_width,r=wheel_radius,center=true);
+// Front axle
 translate([-20,0,0])
     rotate([90,0,0])
-        cylinder(h=30, r=2, center=true);
+    cylinder(h=track,r=2,center=true);
+// Rear axle
+translate([20,0,0])
+    rotate([90,0,0])
+    cylinder(h=track,r=2,center=true);

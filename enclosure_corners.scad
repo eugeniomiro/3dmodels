@@ -57,7 +57,7 @@ module Base(width = 50,
 {
     cube([width, depth, halfHeight]);
     translate([width / 2, depth / 2, halfHeight])
-        Cone(4);
+        Cone(3.5);
 }
 
 module BasedCorner(wallWidth = 3,

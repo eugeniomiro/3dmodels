@@ -3,9 +3,9 @@ module SimpleCorner(wallWidth = 3,
                     totalHeight = 50,
                     totalDepth = 50)
 {
-    // pared trasera
+    // back wall
     cube([totalWidth,wallWidth,totalHeight]);
-    // pared lateral
+    // side wall
     translate([totalWidth,0,0])
         rotate([0,0,90])
             cube([totalDepth,wallWidth,totalHeight]);
@@ -15,7 +15,7 @@ module SimpleCorner(wallWidth = 3,
             cube([totalWidth,
                   wallWidth,
                   totalDepth]);
-    // canaleta trasera
+    // back gutter
     translate([0,
                wallWidth*2,
                wallWidth*2])
@@ -23,7 +23,7 @@ module SimpleCorner(wallWidth = 3,
             cube([wallWidth, 
                   wallWidth, 
                   totalWidth - 2 * wallWidth]);
-    // canaleta lateral
+    // side gutter
     translate([totalWidth - 3*wallWidth,
                totalDepth,
                wallWidth])
@@ -31,18 +31,24 @@ module SimpleCorner(wallWidth = 3,
             cube([wallWidth, 
                   wallWidth, 
                   totalDepth - (2 * wallWidth)]);
-    //relleno canaletas
+    // gutter fill
     cube(3);
 }
-module Cone()
+module Cone(holeRadius = 3)
 {
+    centerRadius    = 3;
+    centerHeight    = 2;
+    masterRadius    = 18;
+    totalHeight     = 3;
+    tanAlpha        = totalHeight / (masterRadius - centerRadius);
+    holeHeight      = tanAlpha * (masterRadius - holeRadius);
     rotate_extrude()
         polygon(points=[
             [0, 0],
-            [18, 0],
-            [3, 3],
-            [3, 1],
-            [0, 2]
+            [masterRadius, 0],
+            [holeRadius, holeHeight],
+            [holeRadius, 1],
+            [0, 1]
         ]);
 }
 module Base(width = 50,
@@ -51,7 +57,7 @@ module Base(width = 50,
 {
     cube([width, depth, halfHeight]);
     translate([width / 2, depth / 2, halfHeight])
-        Cone();
+        Cone(4);
 }
 
 module BasedCorner(wallWidth = 3,
@@ -74,8 +80,8 @@ module BasedCorner(wallWidth = 3,
         }
 }
 
-printBasedCorner = true;
-printSimpleCorner = true;
+printBasedCorner = false;
+printSimpleCorner = false;
 printBase = true;
 wall_h=3;
 h=50;
@@ -83,7 +89,7 @@ d=50;
 w=50;
 
 if(printBase) {
-    Base(w, d, wall_h);
+    Base(w, d, wall_h );
 }
 if(printBasedCorner) {
     translate([0, 55, 0])

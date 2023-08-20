@@ -65,7 +65,7 @@ module BasedCorner(wallWidth = 3,
                    width = 50,
                    height = 50,
                    depth = 50,
-                   gutterWidth = 3.8)
+                   gutterWidth = 3.4)
 {
     translate([0, 0, wallWidth])
         union() {
@@ -101,10 +101,10 @@ module top_profile(gutterWidth = 3)
     ]);
 }
 
-printBasedCorner    = true;
+printBasedCorner    = false;
 printSimpleCorner   = false;
 printBase           = false;
-printSideSupport    = false;
+printSideSupport    = true;
 wall_h = 3;
 h=50;
 d=50;
@@ -113,7 +113,7 @@ w=50;
 if (printSideSupport) {
     rotate([0,-90,0])
         linear_extrude(25) 
-            top_profile(3.8);
+            top_profile(3.4);
 }    
 
 if(printBase) {

@@ -80,13 +80,36 @@ module BasedCorner(wallWidth = 3,
         }
 }
 
+module top_profile() 
+{
+    polygon([
+        [0, 0],
+        [0, 9],
+        [6, 9],
+        [6, 6],
+        [21,6],
+        [21,3],
+        [9, 3],
+        [9, 0],
+        [6, 0],
+        [6, 3],
+        [3, 3],
+        [3, 0],
+    ]);
+}
+
 printBasedCorner = false;
 printSimpleCorner = false;
-printBase = true;
+printBase = false;
 wall_h=3;
 h=50;
 d=50;
 w=50;
+
+rotate([0,-90,0])
+    linear_extrude(25) 
+        top_profile();
+    
 
 if(printBase) {
     Base(w, d, wall_h );

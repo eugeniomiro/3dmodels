@@ -1,7 +1,8 @@
 module SimpleCorner(wallWidth = 3,
                     totalWidth = 50,
                     totalHeight = 50,
-                    totalDepth = 50)
+                    totalDepth = 50,
+                    gutterWidth = 3)
 {
     // back wall
     cube([totalWidth,wallWidth,totalHeight]);
@@ -17,20 +18,20 @@ module SimpleCorner(wallWidth = 3,
                   totalDepth]);
     // back gutter
     translate([0,
-               wallWidth*2,
-               wallWidth*2])
+               wallWidth + gutterWidth,
+               wallWidth * 2])
         rotate([0,90,0])
             cube([wallWidth, 
                   wallWidth, 
-                  totalWidth - 2 * wallWidth]);
+                  totalWidth - wallWidth - gutterWidth]);
     // side gutter
-    translate([totalWidth - 3*wallWidth,
+    translate([totalWidth - 2 * wallWidth - gutterWidth,
                totalDepth,
                wallWidth])
         rotate([90,0,0])
             cube([wallWidth, 
                   wallWidth, 
-                  totalDepth - (2 * wallWidth)]);
+                  totalDepth - wallWidth - gutterWidth]);
     // gutter fill
     cube(3);
 }
@@ -63,14 +64,16 @@ module Base(width = 50,
 module BasedCorner(wallWidth = 3,
                    width = 50,
                    height = 50,
-                   depth = 50)
+                   depth = 50,
+                   gutterWidth = 3.8)
 {
     translate([0, 0, wallWidth])
         union() {
             SimpleCorner(wallWidth, 
                          width, 
                          height - wallWidth, 
-                         depth);
+                         depth,
+                         gutterWidth);
             translate([0,0, -wallWidth])
                 difference() {
                     cube([width, depth, wallWidth]);
@@ -80,7 +83,7 @@ module BasedCorner(wallWidth = 3,
         }
 }
 
-module top_profile() 
+module top_profile(gutterWidth = 3) 
 {
     polygon([
         [0, 0],
@@ -89,30 +92,32 @@ module top_profile()
         [6, 6],
         [21,6],
         [21,3],
-        [9, 3],
-        [9, 0],
-        [6, 0],
-        [6, 3],
+        [6 + gutterWidth, 3],
+        [6 + gutterWidth, 0],
+        [3 + gutterWidth, 0],
+        [3 + gutterWidth, 3],
         [3, 3],
         [3, 0],
     ]);
 }
 
-printBasedCorner = false;
-printSimpleCorner = false;
-printBase = false;
-wall_h=3;
+printBasedCorner    = true;
+printSimpleCorner   = false;
+printBase           = false;
+printSideSupport    = false;
+wall_h = 3;
 h=50;
 d=50;
 w=50;
 
-rotate([0,-90,0])
-    linear_extrude(25) 
-        top_profile();
-    
+if (printSideSupport) {
+    rotate([0,-90,0])
+        linear_extrude(25) 
+            top_profile(3.8);
+}    
 
 if(printBase) {
-    Base(w, d, wall_h );
+    Base(w, d, wall_h);
 }
 if(printBasedCorner) {
     translate([0, 55, 0])

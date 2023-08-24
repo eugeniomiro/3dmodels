@@ -101,29 +101,5 @@ module top_profile(gutterWidth = 3)
     ]);
 }
 
-printBasedCorner    = false;
-printSimpleCorner   = false;
-printBase           = false;
-printSideSupport    = true;
-wall_h = 3;
-h=50;
-d=50;
-w=50;
-
-if (printSideSupport) {
-    rotate([0,-90,0])
-        linear_extrude(25) 
-            top_profile(3.4);
-}    
-
-if(printBase) {
-    Base(w, d, wall_h);
-}
-if(printBasedCorner) {
-    translate([0, 55, 0])
-        BasedCorner(wall_h, w, h, d);
-}
-if(printSimpleCorner) {
-    translate([-55, 0, 0])
-        SimpleCorner(wall_h, w, h, d);
-}
+import("/home/eugenio/repos/3dmodels/enclosure/leg_based_enclosure__.stl");
+import("/home/eugenio/repos/3dmodels/enclosure/leg_based_enclosure__.stl");

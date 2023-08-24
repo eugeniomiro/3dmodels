@@ -1,7 +1,7 @@
 difference()
 {
-    cube([6,2,2]);
-    translate([0.5,0.6,1.1])
+    cube([60,20,2]);
+    translate([5,6,1.2])
     linear_extrude(1)
-        text("Eugenio", size=1);
+        text("Eugenio", size=10);
 }

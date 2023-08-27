@@ -5,4 +5,4 @@ h=50;
 d=50;
 w=50;
 
-SimpleCorner(wall_h, w, h, d);
+SimpleCorner(wall_h, w, h, d, 3);

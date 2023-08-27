@@ -101,5 +101,37 @@ module top_profile(gutterWidth = 3)
     ]);
 }
 
-import("/home/eugenio/repos/3dmodels/enclosure/leg_based_enclosure__.stl");
-import("/home/eugenio/repos/3dmodels/enclosure/leg_based_enclosure__.stl");
+
+module CableCoverBorderProfile(
+    width = 6,
+    borderHeight = 3,
+    gutterHeight = 3,
+    gutterWidth = 3)
+{
+    polygon([
+        [0,0],
+        [width, 0],
+        [width, borderHeight],
+        [width - gutterWidth, borderHeight],
+        [width - gutterWidth, borderHeight + gutterHeight],
+        [width, borderHeight + gutterHeight],
+        [width, 2 * borderHeight + gutterHeight],
+        [0, 2 * borderHeight + gutterHeight]
+    ]);
+}
+module CableCoverBorderLinear(height = 10)
+{
+    linear_extrude(height)
+        CableCoverBorderProfile();
+}
+union()
+{
+    //rotate_extrude(180)
+    //    CableCoverBorderProfile();
+    CableCoverBorderLinear();
+    translate([-6, 3, 0])
+        cube([6, 3, 10]);
+    translate([-6, 9, 0])
+        rotate([0, 0, 180])
+            CableCoverBorderLinear();
+}

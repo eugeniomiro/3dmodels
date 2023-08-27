@@ -5,4 +5,4 @@ h=50;
 d=50;
 w=50;
 
-BasedCorner(wall_h, w, h, d);
+BasedCorner(wall_h, w, h, d, 3);

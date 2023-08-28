@@ -5,9 +5,10 @@ wall_h = 3;
 h=50;
 d=50;
 w=50;
+gutter_width=3.4;
 
 difference() {
-    BasedCorner(wall_h, w, h, d, 3);
+    BasedCorner(wall_h, w, h, d, gutter_width);
     // back hole
     translate([
         w / 2 ,

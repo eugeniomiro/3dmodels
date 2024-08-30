@@ -1,26 +1,31 @@
 /*[ Visibility ]*/
 // enable PSULayer
 enablePSU = true;
-// enable outside walls
-enableOutsideWalls = false;
-// enable outside columns
-enableOutsideColumns = true;
 // enable HDD tray
 enabledHDDTray = true;
 // enable RPI Cover
 enableRPICover = true;
 // enable RPI Tray
 enableRPITray = true;
+// enable outside
+enableOutside = true;
 
-/*[Adaptors]*/
+/*[Component selection]*/
 // Selected HDD Adaptor
-SelectedAdaptor = 1;    // [1:"SATA/USB Adaptor (original design)", 2:"BELSIC USB 3.0 Adaptor" ]
+SelectedAdaptor = 1;    // [ 1:"SATA/USB Adaptor (original design)", 2:"BELSIC USB 3.0 Adaptor" ]
+// Selected Outside
+SelectedOutside = 2;    // [ 1:"Walls", 2:"Columns" ]
+
+//[Position]
+// Floor Z coordinate
+floorZ = -3;
+floorY = -3;
 
 // M2 screws
 module M2Screw(length=5) {
     union() {
         cylinder(length,0.95,0.95,$fn=40);
-        #translate([0,0,-10])
+        translate([0,0,-10])
             cylinder(10,2,2,$fn=40);
     }
 }
@@ -64,7 +69,7 @@ module M3ScrewBase(x,y) {
 // PSU layer
 module PSULayer() {
     color ("Beige")
-    translate([0,0,0])
+    translate([0, floorY + 3, floorZ + 3])
         union() { 
             M3ScrewBase(47.5-67/2,138);
             M3ScrewBase(47.5+67/2,138);
@@ -99,7 +104,7 @@ module PSULayer() {
 }
 // outside
 module OutsideWalls() {
-    translate([-3,-3,-3])
+    translate([-3, floorY, floorZ])
     difference(){
         cube([101,151,133]);
         translate([3,3,3])
@@ -120,17 +125,17 @@ module OutsideWalls() {
 // Extended NAS location by 2x2
 // Added Fan block
 module OutsideColumns() {
-    translate([-3,-3,-3])
+    translate([-3, floorY, floorZ])
         difference() {
             union(){
-                translate ([-27,0,0]) cube([103+27,151,3]);  // Base
-                translate ([-3-27,0,0]) cube([33,151,130]);  // Fan block
-                translate ([3-27,3,0]) cylinder(130,10,10);
-                translate ([3-27,147,0]) cylinder(130,10,10);
-                translate ([0,3,0]) cylinder(130,10,10);
-                translate ([0,147,0]) cylinder(130,10,10);
-                translate ([99,3,0]) cylinder(130,10,10);
-                translate ([99,147,0]) cylinder(130,10,10);
+                translate ([-27,0,0])       cube([103+27,151,3]);   // Base
+                translate ([-3-27,0,0])     cube([33,151,130]);     // Fan block
+                translate ([3-27,3,0])      cylinder(130,10,10);
+                translate ([3-27,147,0])    cylinder(130,10,10);
+                translate ([0,3,0])         cylinder(130,10,10);
+                translate ([0,147,0])       cylinder(130,10,10);
+                translate ([99,3,0])        cylinder(130,10,10);
+                translate ([99,147,0])      cylinder(130,10,10);
             };
             translate([-27,14,3]) cube([27,122,130]); // Fan
             translate([-31,24,3]) cube([35,102,130]); // Fan vents
@@ -141,7 +146,7 @@ module OutsideColumns() {
 // RPi cover
 module RPICover() {
     color("Moccasin")
-    translate([0,0,78+13*3])
+    translate([0, floorY + 3, floorZ + 81 + 13 * 3])
         union() {
             difference() {
                 cube([95,145,10]);
@@ -172,7 +177,7 @@ module RPICover() {
 // RPi Tray
 module RPITray() {
     color ("PapayaWhip")
-    translate([0,0,58])
+    translate([0, floorY + 3, floorZ + 61])
         union() {
             difference() {
                 cube([95,145,20]);
@@ -217,9 +222,8 @@ module RPITray() {
         };
 }
 // HDD tray
-module HDDTray(AdaptorType=1) {
-    
-translate([0,0,45])
+module HDDTray(AdaptorType = 1) {
+translate([0, floorY + 3,floorZ + 48])
     difference() {
         cube([95,145,13]);
         
@@ -229,8 +233,17 @@ translate([0,0,45])
                 translate([-0.5,-0.01,0])
                     cube([71,100,8]);
                 // HDD under hole
-                translate([5,5,-4])
-                    cube([60,90,10]);
+                translate([8,5,-4])
+                    cube([54,90,10]);
+                // HDD Screw holes
+                translate([4,15,-3.5])
+                    cylinder(4, d=2.5, $fn=40);
+                translate([4,15,-3.5])
+                    cylinder(2, d1=6, d2=2.5, $fn=40);
+                translate([66,15,-4])
+                    cylinder(5, d=2.5, $fn=40);
+                translate([66,15,-4])
+                    cylinder(2, d1=6, d2=2.5, $fn=40);
                 // HDD over hole
                 translate([-0.5,5,1])
                     cube([71,90,10]);
@@ -241,13 +254,18 @@ translate([0,0,45])
                 }
                 if (AdaptorType == 1) {
                     // SATA/USB Adaptor
-                    translate([6,-19,-2])
+                    translate([5.5,-22,-2])
                         union() {
                             // Main body
-                            cube([47,19,13]);
+                            #cube([48,22,13]);
                             // Back
-                            translate([5,-19,0])
-                                cube([37,20,13]);
+                            translate([5.5,-19,0]){
+                                union() {
+                                    cube([37,20,13]);
+                                    translate([5,-30,1])
+                                        cube([18,40,9]);
+                                }
+                            }
                         }
                     // Cable back sink
                     translate([20,-52,-3.01])
@@ -257,11 +275,11 @@ translate([0,0,45])
                         union() {
                             cube([71, 22, 100]);
                             translate([5,-40,1])
-                                cube([18,50,9]);
+                                #cube([18,50,9]);
                         }
                     // Cable back sink
                     translate([22,-52,-3.01])
-                        cube([63,15,15]);
+                        cube([61,15,15]);
                 }
                 // Cable room
                 translate([73,-52,0])
@@ -269,14 +287,25 @@ translate([0,0,45])
             };
     }
 }
-
-
+// USB Hub Support
+module USBHubSupport(){
+    translate([98, floorY, floorZ])
+    union() {
+        cube([50, 170, 3]);
+        translate([50, 0, 0])
+            cube([10, 170, 24]);
+    }
+}
+// main
 if (enablePSU)
     PSULayer();
-if (enableOutsideWalls)
-    OutsideWalls();
-if (enableOutsideColumns)
-    OutsideColumns();
+if (enableOutside) {
+    if (SelectedOutside == 1)
+        OutsideWalls();
+    else
+        OutsideColumns();
+    USBHubSupport();
+}
 if(enableRPICover)
     RPICover();
 if (enableRPITray)

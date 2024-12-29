@@ -36,23 +36,26 @@ module body(size) {
             [ 5,  0]
         ]);
 }
-module piece() {
+module piece(width) {
     wall();
     translate([0,0,4.5])
-        body(51);
-    translate([0,0,55])
+        body(width - 9);
+    translate([0, 0, width -5])
         wall();
 }
 $fn=100;
-rotate([0,-90,0])
-    difference() {
-        piece();
-        translate([13, 36, -9])
-            cylinder(18, d=5);
-        translate([10, 26, -2])
-            cylinder(12, d=3); 
-        translate([13, 36, 51])
-            cylinder(18, d=5);
-        translate([10, 26, 52])
-            cylinder(12, d=3); 
+module a3(width = 60) {
+    rotate([0, -90, 0])
+        difference() {
+            piece(width);
+            translate([13, 36, -9])
+            #    cylinder(18, d=5);
+            translate([10, 26, -2])
+            #    cylinder(12, d=3); 
+            translate([13, 36, width - 9])
+            #    cylinder(18, d=5);
+            translate([10, 26, width - 8])
+            #    cylinder(12, d=3); 
+        }
     }
+ a3(220);

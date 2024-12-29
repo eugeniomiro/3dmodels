@@ -44,18 +44,36 @@ module piece(width) {
         wall();
 }
 $fn=100;
-module a3(width = 60) {
+module a3(width = 60, topScrews = false) {
     rotate([0, -90, 0])
         difference() {
             piece(width);
+            
+            // right pin hole
             translate([13, 36, -9])
-            #    cylinder(18, d=5);
+                cylinder(18, d=5);
+            // right screw hole
             translate([10, 26, -2])
-            #    cylinder(12, d=3); 
+                cylinder(12, d=3); 
+            // left pin hole
             translate([13, 36, width - 9])
-            #    cylinder(18, d=5);
+                cylinder(18, d=5);
+            // left screw hole
             translate([10, 26, width - 8])
-            #    cylinder(12, d=3); 
+                cylinder(12, d=3); 
+            // top screws
+            screwCount = ceil((width - 50) / 50);
+            initial = (width - ((screwCount - 1) * 50)) / 2;
+            echo(screwCount, initial);
+            
+            if (topScrews) {
+                rotate ([0, 90, 0]) {
+                    for(screwx = [0 : 1 : screwCount - 1]) {
+                        translate([-initial + screwx * -50, 15, -2.5])
+                        #cylinder(h=10, d=3);
+                    }
+                }
+            }
         }
     }
- a3(220);
+ a3(60, true);

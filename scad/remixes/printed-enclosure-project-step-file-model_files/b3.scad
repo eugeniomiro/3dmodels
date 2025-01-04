@@ -65,4 +65,28 @@ module piece(width) {
             }
     }
 }
-piece(224);
+module b3(width, topScrews = false) {
+    difference() {
+        piece(width);
+        
+        screwCount = ceil((width - 50) / 50);
+        initial = (width - ((screwCount - 1) * 50)) / 2;
+        echo(screwCount, initial);
+        
+        if (topScrews) {
+            for(screwx = [0 : 1 : screwCount - 1]) {
+                rotate ([45, 0, 90]) {
+                    translate([-initial + screwx * -50, 22, -5])
+                        #cylinder(h=10, d=3);
+                }
+                rotate ([135, 0, 90]) {
+                    translate([-initial + screwx * -50, 22, -5])
+                        #cylinder(h=10, d=3);
+                }
+            }
+        }
+    }
+}
+
+b3(224, true) {
+}

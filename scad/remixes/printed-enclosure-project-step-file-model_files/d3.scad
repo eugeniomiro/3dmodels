@@ -5,8 +5,8 @@ module body(length = 5) {
             [ 12.5, 0],
             [ 12.5, 5],
             [  7.5, 10],
-            [  1.5, 10],
-            [  1.5,1.5],
+            [  1,   10],
+            [  1,  1.5],
             [ -2.5,1.5],
             [ -2.5, 20],
             [ -7.5, 20],
@@ -29,11 +29,11 @@ module piece(width) {
             rotate([90, 0, 0]) {
                 translate([ 6, 5, -10])
                     pin();
-                translate([-7, 5, -10])
+                translate([-6, 5, -10])
                     #pin();
                 translate([ 6, 5, width-10])
                     pin();
-                translate([-7, 5, width-10])
+                translate([-6, 5, width-10])
                     #pin();
             }
     }

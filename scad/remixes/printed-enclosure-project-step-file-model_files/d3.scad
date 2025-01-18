@@ -56,4 +56,4 @@ module d3(width, topScrews = false) {
     }
 }
 
-d3(233, true);
+d3(223, true);

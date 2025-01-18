@@ -1,21 +1,6 @@
 
 module body(length = 5) {
     linear_extrude(length) {
-/*        polygon([
-         [   8,  -1],  // base derecha
-         [  14,   5],
-         [  14,  11],
-         [  21,  18],
-         [  18,  21],
-         [ 4.5, 8.5],
-         [   2,10.5],
-         [ 8.5,16.5],
-         [ 3.5,  21],
-        
-         [-3.5,  21],        
-         [  -8,16.5],
-        ]);
-*/
         polygon([
             [ 12.5, 0],
             [ 12.5, 5],
@@ -42,12 +27,12 @@ module piece(width) {
         rotate([90, 0, 0])
             body(width);
             rotate([90, 0, 0]) {
-                translate([ 7, 5, -10])
-                    #pin();
+                translate([ 6, 5, -10])
+                    pin();
                 translate([-7, 5, -10])
                     #pin();
-                translate([ 7, 5, width-10])
-                    #pin();
+                translate([ 6, 5, width-10])
+                    pin();
                 translate([-7, 5, width-10])
                     #pin();
             }
@@ -71,5 +56,4 @@ module d3(width, topScrews = false) {
     }
 }
 
-d3(223, true) {
-}
+d3(25, true);

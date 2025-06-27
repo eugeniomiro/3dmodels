@@ -3,7 +3,8 @@
 // Zerginator 10/2015
 //
 
-
+$fn=32;
+echo("fn is", $fn);
 
 use <text_on.scad>
 

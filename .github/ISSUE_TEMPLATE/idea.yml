@@ -1,0 +1,49 @@
+name: 💡 Nueva idea o mejora
+description: Proponé una idea para el proyecto, ya sea hardware, software o documentación
+title: "[IDEA] Título claro y conciso"
+labels: [idea]
+assignees: []
+
+body:
+  - type: textarea
+    id: descripcion
+    attributes:
+      label: 🧠 Descripción de la idea
+      description: Explicá qué te gustaría hacer o qué problema querés resolver.
+      placeholder: Ej: Me gustaría integrar un sensor de temperatura en el filtro para registrar condiciones internas.
+    validations:
+      required: true
+
+  - type: dropdown
+    id: categoria
+    attributes:
+      label: 🧩 Categoría
+      options:
+        - Hardware
+        - Firmware
+        - OpenSCAD / Diseño paramétrico
+        - Integración / Automatización
+        - Documentación
+        - Otro
+    validations:
+      required: true
+
+  - type: input
+    id: prioridad
+    attributes:
+      label: 🌟 Prioridad (1 a 5 estrellas)
+      placeholder: Ej: 3
+
+  - type: textarea
+    id: referencias
+    attributes:
+      label: 🔗 Inspiración o referencias
+      description: Links, ideas similares, proyectos que te hayan inspirado (opcional)
+      placeholder: Ej: Basado en el sistema de monitoreo ambiental de Voron TAP mod...
+
+  - type: textarea
+    id: notas
+    attributes:
+      label: 📝 Notas adicionales
+      description: Cualquier otro detalle que quieras dejar registrado
+      placeholder: Ej: Puedo trabajar en un prototipo esta semana.

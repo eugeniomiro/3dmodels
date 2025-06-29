@@ -33,18 +33,21 @@ body:
     id: prioridad
     attributes:
       label: 🌟 Prioridad (1 a 5 estrellas)
-      placeholder: Ej: 3
+      placeholder: |
+        Ej: 3
 
   - type: textarea
     id: referencias
     attributes:
       label: 🔗 Inspiración o referencias
       description: Links, ideas similares, proyectos que te hayan inspirado (opcional)
-      placeholder: Ej: Basado en el sistema de monitoreo ambiental de Voron TAP mod...
+      placeholder: |
+        Ej: Basado en el sistema de monitoreo ambiental de Voron TAP mod...
 
   - type: textarea
     id: notas
     attributes:
       label: 📝 Notas adicionales
       description: Cualquier otro detalle que quieras dejar registrado
-      placeholder: Ej: Puedo trabajar en un prototipo esta semana.
+      placeholder: |
+        Ej: Puedo trabajar en un prototipo esta semana.

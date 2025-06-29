@@ -10,7 +10,8 @@ body:
     attributes:
       label: 🧠 Descripción de la idea
       description: Explicá qué te gustaría hacer o qué problema querés resolver.
-      placeholder: Ej: Me gustaría integrar un sensor de temperatura en el filtro para registrar condiciones internas.
+      placeholder: |
+        Ej: Me gustaría integrar un sensor de temperatura en el filtro para registrar condiciones internas.
     validations:
       required: true
 

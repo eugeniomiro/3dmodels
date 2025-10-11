@@ -60,6 +60,6 @@ difference(){
     }
 }
 
-rotate([270, 270, 270])
-    translate([extrusion_side_support_height, -1.5 * extrusion_side_support_depth - 2, 30])
-        extrusion_lock(100);
+translate([130,extrusion_side_support_depth - 2,extrusion_side_support_height])
+//translate([extrusion_side_support_height, extrusion_side_support_depth - 2, -130])
+    extrusion_lock(100);

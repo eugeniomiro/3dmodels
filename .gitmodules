@@ -1,0 +1,3 @@
+[submodule "swx2_klipper_config"]
+	path = swx2_klipper_config
+	url = https://github.com/eugeniomiro/swx2_klipper_config.git

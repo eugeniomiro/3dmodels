@@ -1,3 +1,6 @@
 [submodule "swx2_klipper_config"]
 	path = swx2_klipper_config
 	url = https://github.com/eugeniomiro/swx2_klipper_config.git
+[submodule "voron0_klipper_config"]
+	path = voron0_klipper_config
+	url = https://github.com/eugeniomiro/voron0_klipper_config.git

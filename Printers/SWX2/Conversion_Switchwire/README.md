@@ -58,7 +58,37 @@ Este repositorio documenta la transición de una **Artillery Sidewinder X2** hac
 
 ## 📦 Bill of Materials (BOM)
 
-*(igual que la versión anterior, ver sección BOM completa)*
+### Electrónica
+- Octopus Pro H723 (ya disponible)
+- Raspberry Pi 4 (ya disponible)
+- EBB36 v1.2 con ADXL345 (ya disponible)
+- Drivers TMC2209 (usar 3–4)
+- PSU 24 V, 350–400 W
+- Conectores JST-XH, MicroFit/MiniFit
+- Cable AWG18–26, malla trenzada, termorretráctil
+
+### Motores y transmisión
+- NEMA17 (X/Y/Z)
+- NEMA14 (extrusor Stealthburner)
+- Correas GT2 6 mm (~10–12 m)
+- Poleas GT2 20T (6–8 unidades)
+- Idlers GT2 20T con rodamientos (6–8 unidades)
+
+### Mecánica
+- Extrusión 2020 (~6–7 m total para chasis completo)
+- Linear rails HIWIN MGN12H (X/Y)
+- Tornillería M3/M4/M5 variada
+- Tuercas T-slot M5 (50–80 unidades)
+- Insertos roscados M3
+- Escuadras internas/externas para 2020
+- Paneles acrílico/PC para enclosure (opcional)
+
+### Hotend y extrusión
+- E3D Revo V6 con termistor 104NT
+- Boquillas Revo (0.4 / 0.6 mm)
+- Cartucho calefactor 24 V, 40 W
+- Ventiladores 5015 (part cooling) y 4010 (hotend)
+
 
 ---
 
@@ -93,3 +123,63 @@ Este repositorio documenta la transición de una **Artillery Sidewinder X2** hac
 canbus_uuid: 1234567890abcdef
 restart_method: command
 ```
+
+### MCU secundario (EBB36 v1.2)
+```ini
+[mcu ebb36]
+canbus_uuid: abcdef1234567890
+restart_method: command
+```
+
+*(El `canbus_uuid` se obtiene con canbus_query.py en la Pi.)*
+
+### Extrusor (Stealthburner + Revo V6)
+```ini
+[extruder]
+step_pin: ebb36:PB4
+dir_pin: ebb36:PB3
+enable_pin: !ebb36:PB5
+microsteps: 16
+rotation_distance: 22.678
+heater_pin: ebb36:PA0
+sensor_type: EPCOS 100K B57560G104F
+sensor_pin: ebb36:PA1
+min_temp: 0
+max_temp: 300
+```
+
+### Input Shaper
+```ini
+[adxl345]
+cs_pin: ebb36:PB12
+spi_bus: spi1
+axes: x,y,z
+[resonance_tester]
+accel_chip: adxl345
+probe_points:
+    100,100,20
+```
+
+### 📂 Organización de archivos .cfg
+- printer.cfg → archivo principal con includes
+- motors.cfg → define X, Y, Z en Octopus
+- EBB.cfg → extrusor, hotend, fans, ADXL345
+- bed.cfg → heater bed + sensor
+- fans.cfg → ventiladores adicionales
+- macros.cfg → macros de homing y utilitarios
+
+Ejemplo:
+```ini
+[include motors.cfg]
+[include EBB.cfg]
+[include bed.cfg]
+[include fans.cfg]
+[include macros.cfg]
+```
+
+### 📚 Notas finales
+- El Revo V6 con termistor 104NT se configura como EPCOS 100K B57560G104F.
+- El ADXL345 del EBB36 v1.2 simplifica la calibración de vibraciones.
+- Katapult permite actualizar Klipper en la Octopus sin DFU manual.
+- CANbus reduce cableado y mejora robustez frente a interferencias.
+- Documentar cada paso en este repositorio permitirá replicar y compartir el proceso con la comunidad maker.

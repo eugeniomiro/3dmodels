@@ -160,13 +160,13 @@ probe_points:
     100,100,20
 ```
 
-### 📂 Organización de archivos .cfg
-- printer.cfg → archivo principal con includes
-- motors.cfg → define X, Y, Z en Octopus
-- EBB.cfg → extrusor, hotend, fans, ADXL345
-- bed.cfg → heater bed + sensor
-- fans.cfg → ventiladores adicionales
-- macros.cfg → macros de homing y utilitarios
+### 📂 Organización de archivos `.cfg`
+- `printer.cfg` → archivo principal con includes
+- `motors.cfg` → define X, Y, Z en Octopus
+- `EBB.cfg` → extrusor, hotend, fans, ADXL345
+- `bed.cfg` → heater bed + sensor
+- `fans.cfg` → ventiladores adicionales
+- `macros.cfg` → macros de homing y utilitarios
 
 Ejemplo:
 ```ini
@@ -178,8 +178,13 @@ Ejemplo:
 ```
 
 ### 📚 Notas finales
-- El Revo V6 con termistor 104NT se configura como EPCOS 100K B57560G104F.
-- El ADXL345 del EBB36 v1.2 simplifica la calibración de vibraciones.
-- Katapult permite actualizar Klipper en la Octopus sin DFU manual.
-- CANbus reduce cableado y mejora robustez frente a interferencias.
+- El **Revo V6 con termistor 104NT** se configura como `EPCOS 100K B57560G104F`.
+- El **ADXL345** del **EBB36 v1.2** simplifica la calibración de vibraciones.
+- **Katapult** permite actualizar Klipper en la Octopus sin DFU manual.
+- **CANbus** reduce cableado y mejora robustez frente a interferencias.
 - Documentar cada paso en este repositorio permitirá replicar y compartir el proceso con la comunidad maker.
+
+> NOTA: Esta documentación fue generada por **Copilot** durante una charla muy interesante que tuvimos.
+>
+> La información del proyecto fue proporcionada por mi, y **Copilot** me confirmó mucha de ella que yo ya tenía en mente y además me generó la mayoría de la documentación que se ve en este documento a partir de nuestra conversación.
+> Voy a continuar usando Copilot para la generación de información más rápidamente y con mayor precisión.

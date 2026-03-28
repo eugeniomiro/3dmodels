@@ -12,7 +12,7 @@ El uso de la laptop para otras tareas me obligaba a veces a reiniciarla, y como 
 
 Luego conocí Klipper, el que mejora el desempeño de la impresora, delegando la decodificación de los GCODEs a una computadora de alto nivel, dejando solo el control del hardware en los microcontroladores. Además permite el uso de múltiples microcontroladores con una sola computadora, siendo la misma un Single Board Computer o una computadora regular. 
 
-Para instalar Klipper en el PI utilicé MainsailOS y [este video de Ethereal Project 3d](https://www.youtube.com/watch?v=7iQK6uSapJ0). Una diferencia, no usé Putty, usé el ssh de Windows 11, que me permite lo mismo que Putty.
+Para instalar Klipper en el PI utilicé MainsailOS y [este video de Ethereal Project 3d](https://www.youtube.com/watch?v=7iQK6uSapJ0). Una diferencia, no usé Putty, usé el ssh de Windows 11, que me permite lo mismo que Putty. Otra buena fuente de información, que he utilizado en otras oportunidades para recuperar/actualizar mi SWX2 es este artículo: [How to Install Klipper on Sidewinder X2: Config and Setup](https://3dprintbeginner.com/how-to-install-klipper-on-sidewinder-x2/)
 
 Luego de mi inicio con este método volví a instalar pero esta vez usando MainsailOS, el que viene ya instalado con todo lo que Kiauh instala, lo que necesitamos solamente es instalar print.cfg y los archivos incluidos.
 

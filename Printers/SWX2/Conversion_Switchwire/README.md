@@ -1,6 +1,6 @@
 # Proyecto: Conversión Sidewinder X2 → Voron Switchwire
 
-Este repositorio documenta la transición de una **Artillery Sidewinder X2** hacia una plataforma inspirada en el **Voron Switchwire**, utilizando electrónica avanzada, mejoras mecánicas y un enfoque modular.
+Este repositorio documenta la transición de una **Artillery Sidewinder X2** hacia una plataforma inspirada en el [**Voron Switchwire**](http://vorondesign.com/voron_switchwire), utilizando electrónica avanzada, mejoras mecánicas y un enfoque modular.
 
 ---
 
@@ -56,7 +56,9 @@ Este repositorio documenta la transición de una **Artillery Sidewinder X2** hac
 
 ---
 
-## 📦 Bill of Materials (BOM)
+## 📦 Bill of Materials ([BOM](BOM.xlsx))
+
+La siguiente lista fue preparada por Copilot, pero la planilla Excel vinculada es derivada del Sourcing Guide (en construcción) de Voron Switchwire, pero creada y curada manualmente por mi para este proyecto.
 
 ### Electrónica
 - Octopus Pro H723 (ya disponible)

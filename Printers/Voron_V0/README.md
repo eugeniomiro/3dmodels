@@ -22,4 +22,8 @@ el que elimina el log más antiguo que 10 días para liberar espacio en la parti
 
 El día de hoy (12 de Octubre de 2025) además envié el [Serial Request en r/voroncorexy](https://www.reddit.com/r/voroncorexy/comments/1o4vxhn/serial_request_voron_02_r2_siboor_kit_discord/)
 
-2026/05/09 -  actualicé el firmware del display usando [este procedimiento](https://github.com/VoronDesign/Voron-Hardware/blob/master/V0_Display/Documentation/Setup_and_Flashing_Guide.md)
+2026/05/09 -  actualicé el firmware de:
+
+* voron display usando [este procedimiento](https://github.com/VoronDesign/Voron-Hardware/blob/master/V0_Display/Documentation/Setup_and_Flashing_Guide.md)
+* linux mcu usando [este procedimiento](https://www.klipper3d.org/RPi_microcontroller.html)
+* klipper expander, con [este switch](https://github.com/VoronDesign/Voron-Hardware/blob/master/Klipper_Expander/Documentation/README.md#boot-jumper) y [este procedimiento](https://github.com/VoronDesign/Voron-Hardware/blob/master/Klipper_Expander/Documentation/Setup_and_Flashing_Guide.md)

@@ -27,3 +27,4 @@ El día de hoy (12 de Octubre de 2025) además envié el [Serial Request en r/vo
 * voron display usando [este procedimiento](https://github.com/VoronDesign/Voron-Hardware/blob/master/V0_Display/Documentation/Setup_and_Flashing_Guide.md)
 * linux mcu usando [este procedimiento](https://www.klipper3d.org/RPi_microcontroller.html)
 * klipper expander, con [este switch](https://github.com/VoronDesign/Voron-Hardware/blob/master/Klipper_Expander/Documentation/README.md#boot-jumper) y [este procedimiento](https://github.com/VoronDesign/Voron-Hardware/blob/master/Klipper_Expander/Documentation/Setup_and_Flashing_Guide.md)
+* mcu flash usando [este procedimiento](https://mellow-3d.github.io/fly-gemini_v3_klipper_mcu_usb.html) pero usando `make flash FLASH_DEVICE=0483:df11` para finalmente instalar el firmware

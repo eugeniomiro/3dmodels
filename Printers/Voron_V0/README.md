@@ -8,23 +8,27 @@ Tardé algo menos de dos semanas en armarla, trabajo de por medio, pero no anduv
 
 Las primeras impresiones fueron en Junio, pero por un motivo o por otro todo se fue retrasando.
 
-Primero algunos problemas con los Drivers TMC 2205, los que me fueron enviados como repuesto poco tiempo después de la compra pero tardaron infinito en llegar (2 meses y medio), y los tuve que ir a buscar personalmente porque no podían creer que me hayan cobrado $1 por ellos, gracias Aduana Argentina.
+Primero algunos problemas con los Drivers TMC 2209, los que me fueron enviados como repuesto poco tiempo después de la compra pero tardaron infinito en llegar (2 meses y medio), y los tuve que ir a buscar personalmente porque no podían creer que me hayan cobrado $1 por ellos, gracias Aduana Argentina.
 
 Luego, el cable del Umbilical no conectaba bien, y el extrusor dejaba de extruir. Mi falta de experiencia hizo que comenzara a intercambiar motores, siempre llegando al mismo punto. El extrusor dejaba de extruir. El tema era el cable que con las vibraciones dejaba de hacer contacto.
 
-Con tantas idas y vueltas en varias oportunidades se me llenó unas de las particiones /var/log, no permitiéndome instalar nuevo software, la última vez fue ayer (hoy es 12/10/2025), cuando quise instalar **gh** para subir el repo de configuración de la impresora a GitHub.
+* 2025/10/12 - Con tantas idas y vueltas en varias oportunidades se me llenó unas de las particiones /var/log, no permitiéndome instalar nuevo software, la última vez fue ayer (hoy es 12/10/2025), cuando quise instalar [`gh`](https://cli.github.com/) para subir el repo de configuración de la impresora a GitHub.
 
-Para subsanar ese problema usé el comando:
-```
-sudo journalctl --vacuum-time=10d
-```
-el que elimina el log más antiguo que 10 días para liberar espacio en la partición
+    Para subsanar ese problema usé el comando:
+    ```
+    sudo journalctl --vacuum-time=10d
+    ```
+    el que elimina el log más antiguo que 10 días para liberar espacio en la partición
 
-El día de hoy (12 de Octubre de 2025) además envié el [Serial Request en r/voroncorexy](https://www.reddit.com/r/voroncorexy/comments/1o4vxhn/serial_request_voron_02_r2_siboor_kit_discord/)
+    Además envié el [Serial Request en r/voroncorexy](https://www.reddit.com/r/voroncorexy/comments/1o4vxhn/serial_request_voron_02_r2_siboor_kit_discord/)
 
-2026/05/09 -  actualicé el firmware de:
+* 2026/05/09 - actualicé el firmware de:
 
-* voron display usando [este procedimiento](https://github.com/VoronDesign/Voron-Hardware/blob/master/V0_Display/Documentation/Setup_and_Flashing_Guide.md)
-* linux mcu usando [este procedimiento](https://www.klipper3d.org/RPi_microcontroller.html)
-* klipper expander, con [este switch](https://github.com/VoronDesign/Voron-Hardware/blob/master/Klipper_Expander/Documentation/README.md#boot-jumper) y [este procedimiento](https://github.com/VoronDesign/Voron-Hardware/blob/master/Klipper_Expander/Documentation/Setup_and_Flashing_Guide.md)
-* mcu flash usando [este procedimiento](https://mellow-3d.github.io/fly-gemini_v3_klipper_mcu_usb.html) pero usando `make flash FLASH_DEVICE=0483:df11` para finalmente instalar el firmware
+    * voron display usando [este procedimiento](https://github.com/VoronDesign/Voron-Hardware/blob/master/V0_Display/Documentation/Setup_and_Flashing_Guide.md)
+    * linux mcu usando [este procedimiento](https://www.klipper3d.org/RPi_microcontroller.html)
+    * klipper expander, con [este switch](https://github.com/VoronDesign/Voron-Hardware/blob/master/Klipper_Expander/Documentation/README.md#boot-jumper) y [este procedimiento](https://github.com/VoronDesign/Voron-Hardware/blob/master/Klipper_Expander/Documentation/Setup_and_Flashing_Guide.md)
+
+* 2026/06/10 - actualicé 
+
+    * firmware del flu gemini v2 usando [este procedimiento](https://mellow-3d.github.io/fly-gemini_v3_klipper_mcu_usb.html) pero usando `make flash FLASH_DEVICE=0483:df11` para finalmente instalar el firmware, no la herramienta de Mellow.
+    * mejoré un poco este documento, solo un poco, y le cambié algunas de las notas con un estilo más de log que de cuento.

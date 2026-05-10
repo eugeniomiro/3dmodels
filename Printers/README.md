@@ -8,3 +8,11 @@ Mis impresoras hasta el día de hoy fueron tres. A continuación la lista en ord
 * [Siboor Voron Trident June AWD](Voron_Trident/README.md)
 
 Digo 'fueron' porque no todas están conmigo hoy. La Hornet se la regalé a mi hijo menor.
+
+## Log
+
+* 2026/05/10
+
+    - Agregué el README para la Trident
+    - Inicié este log para los cambios en mis impresoras
+    - Actualicé el log de la V0

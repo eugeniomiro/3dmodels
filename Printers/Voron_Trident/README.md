@@ -1,1 +1,6 @@
 # Siboor Voron Trident June AWD
+
+2026/05/10 -
+    Luego de mi [experiencia con la Siboor V0](../Voron_V0/README.md), mi paso siguiente fue una Siboor Trident AWD. Sinceramente una experiencia excelente. Dicho esto, cabe destacar que no fue sencillo. Tuve que aprender muchas cosas para que me funcionara como está hoy (no perfecto, pero la uso como impresora principal, en conjunto con la V0). La compra fue el 8 de noviembre de 2025 y me llegó a casa el 25 de noviembre de 2025. Dos cajas enormes, llenas de diversión. <br>
+    Este es [el link](https://discord.com/channels/460117602945990666/1442987503438135398) al build log en Discord.
+    La encendí por primera vez el día 16 de diciembre de 2025, pero tuve algunos problemas también, no fue fácil haha. Obviamente el problema estaba en la capa 8, como no podía ser de otra manera. Se me quemó un stepper driver por prenderlo sin los ventiladores andando, pero además había puesto los cables cambiados entre el Z2 y Z1, por lo que cuando quería nivelar la cama no podía. Compré otros y, 35 días después, estaba funcionando, el 30 de enero de 2026 hice mi [cereal request](https://www.reddit.com/r/voroncorexy/comments/1qrg25w/serial_request_voron_trident_awd_350_siboor_kit/)
